@@ -13,7 +13,6 @@ public class Konto extends Bank {
 
     public Konto() {
     }
-
     public Konto(Bank bank, int iban, double kontostand, double dispolimit, Kunde kunde) {
         this.setKunde(kunde);
         this.setIban(iban);
@@ -49,7 +48,6 @@ public class Konto extends Bank {
     public List<String> getTransaktionsliste() {
         return transaktionsliste;
     }
-
     public void printTransaktionen() {
         System.out.println("Transaktionen für Konto " + this.getIban() + ":");
         for (String transaktion : transaktionsliste) {
