@@ -12,19 +12,5 @@ public class Main {
         konto3.abheben(213);
         System.out.println(konto3.getKontostand());
         System.out.println(konto.getKontostand());
-
-
-
-
-        /*
-        System.out.println(konto.getBank().bankinformationenAnzeigenString());
-        System.out.println(konto.getKunde().kundeninformationenAnzeigenString());
-        System.out.println(konto.kontoinformationenAnzeigenString());
-        konto.einzahlung(1000);
-        System.out.println(konto.kontoinformationenAnzeigenString());
-        konto.abheben(500);
-        System.out.println(konto.getTransaktionsliste());
-
-         */
     }
 }
