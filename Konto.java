@@ -80,14 +80,6 @@ public class Konto extends Bank {
         this.transaktionsliste.add("Abhebung: " + betrag + " €");
     }
     public boolean transaktion(double betrag, Konto empfaenger, int blz, int iban) {
-        if (blz != empfaenger.getBank().getBlz()) {
-            System.out.println("Abgelehnt: Bankleitzahl stimmt nicht überein");
-            return false;
-        }
-        if (iban != empfaenger.getIban()) {
-            System.out.println("Abgelehnt: IBAN stimmt nicht überein");
-            return false;
-        }
         if (betrag > 2000) {
             System.out.println("Abgelehnt: Der Betrag " + betrag + " liegt über dem Dispolimit.");
             return false;
