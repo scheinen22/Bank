@@ -29,21 +29,19 @@ public class Bank {
     }
     public void transfer(Konto sender, Konto empfaenger, double betrag, int blz, int iban) {
         if (empfaenger.getBank().getBlz() != blz && empfaenger.getIban() != iban) {
-            System.out.println("Überweisung fehlgeschlagen.\nIBAN und Bankleitzahl stimmen nicht überein.");
+            System.out.println("Überweisung fehlgeschlagen.\nIBAN und Bankleitzahl stimmen nicht überein.\n");
             return;
         }
         if (empfaenger.getBank().getBlz() != blz) {
-            System.out.println("Überweisung fehlgeschlagen.\nBankleitzahl stimmt nicht überein.");
+            System.out.println("Überweisung fehlgeschlagen.\nBankleitzahl stimmt nicht überein.\n");
             return;
         }
         if (empfaenger.getIban() != iban) {
-            System.out.println("Überweisung fehlgeschlagen.\nIBAN stimmt nicht überein.");
+            System.out.println("Überweisung fehlgeschlagen.\nIBAN stimmt nicht überein.\n");
             return;
         }
         if (sender.transaktion(betrag, empfaenger, blz, iban)) {
             System.out.println("Überweisung von Konto " + sender.getIban() + " zu Konto " + empfaenger.getIban() + " abgeschlossen.\n");
-        } else {
-            System.out.println("Überweisung fehlgeschlagen.");
         }
     }
 }
