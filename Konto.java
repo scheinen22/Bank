@@ -9,18 +9,18 @@ public class Konto extends Bank {
     private Kunde kunde;
     private Bank bank;
     private double dispolimit;
-    private int transaktionsid;
     private List<String> transaktionsliste;
 
     public Konto() {
     }
 
-    public Konto(Bank bank, int iban, double kontostand, Kunde kunde) {
+    public Konto(Bank bank, int iban, double kontostand, double dispolimit, Kunde kunde) {
         this.setKunde(kunde);
         this.setIban(iban);
         this.setKontostand(kontostand);
         this.setBank(bank);
         this.transaktionsliste = new ArrayList<>();
+        this.setDispolimit(dispolimit);
     }
     public int getIban() {
         return iban;
@@ -93,7 +93,7 @@ public class Konto extends Bank {
             return false;
         }
         this.kontostand -= betrag;
-        empfaenger.einzahlung(betrag);
+        empfaenger.kontostand += betrag;
         this.transaktionsliste.add("Überweisung an Konto " + empfaenger.getIban() + ": -" + betrag + " €");
         empfaenger.addTransaktion("Eingang von Konto " + this.getIban() + ": +" + betrag + " €");
         for(int i = 0; i <= 2; i++) {
