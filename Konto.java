@@ -81,11 +81,11 @@ public class Konto extends Bank {
     }
     public boolean transaktion(double betrag, Konto empfaenger, int blz, int iban) {
         if (betrag > 2000) {
-            System.out.println("Abgelehnt: Der Betrag " + betrag + " liegt über dem Dispolimit.");
+            System.out.println("Abgelehnt: Der Betrag " + betrag + " liegt über dem Überweisungslimit.\n");
             return false;
         }
         if (this.kontostand - betrag < -this.dispolimit) {
-            System.out.println("Abgelehnt: Dispolimit überschritten.\nKontostand: " + getKontostand());
+            System.out.println("Abgelehnt: Dispolimit überschritten.\nKontostand: " + getKontostand() + "\n");
             return false;
         }
         this.kontostand -= betrag;
