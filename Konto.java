@@ -13,6 +13,7 @@ public class Konto extends Bank {
 
     public Konto() {
     }
+
     public Konto(Bank bank, int iban, double kontostand, double dispolimit, Kunde kunde) {
         this.setKunde(kunde);
         this.setIban(iban);
@@ -48,6 +49,7 @@ public class Konto extends Bank {
     public List<String> getTransaktionsliste() {
         return transaktionsliste;
     }
+
     public void printTransaktionen() {
         System.out.println("Transaktionen für Konto " + this.getIban() + ":");
         for (String transaktion : transaktionsliste) {
@@ -77,9 +79,13 @@ public class Konto extends Bank {
         this.kontostand -= betrag;
         this.transaktionsliste.add("Abhebung: " + betrag + " €");
     }
-    public boolean transaktion(double betrag, Konto empfaenger, int blz) {
+    public boolean transaktion(double betrag, Konto empfaenger, int blz, int iban) {
         if (blz != empfaenger.getBank().getBlz()) {
             System.out.println("Abgelehnt: Bankleitzahl stimmt nicht überein");
+            return false;
+        }
+        if (iban != empfaenger.getIban()) {
+            System.out.println("Abgelehnt: IBAN stimmt nicht überein");
             return false;
         }
         if (betrag > 2000) {
