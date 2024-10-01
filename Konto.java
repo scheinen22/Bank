@@ -13,7 +13,6 @@ public class Konto extends Bank {
 
     public Konto() {
     }
-
     public Konto(Bank bank, int iban, double kontostand, double dispolimit, Kunde kunde) {
         this.setKunde(kunde);
         this.setIban(iban);
