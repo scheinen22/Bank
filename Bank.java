@@ -27,12 +27,16 @@ public class Bank {
     public String bankinformationenAnzeigenString() {
         return "BLZ: " + this.getBlz() + "\nBankname: " + this.getBankname();
     }
-    public void transfer(Konto sender, Konto empfaenger, double betrag, int blz) {
+    public void transfer(Konto sender, Konto empfaenger, double betrag, int blz, int iban) {
         if (empfaenger.getBank().getBlz() != blz) {
             System.out.println("Überweisung fehlgeschlagen.\nBankleitzahl stimmt nicht überein.");
             return;
         }
-        if (sender.transaktion(betrag, empfaenger, blz)) {
+        if (empfaenger.getIban() != iban) {
+            System.out.println("Überweisung fehlgeschlagen.\nIBAN stimmt nicht überein.");
+            return;
+        }
+        if (sender.transaktion(betrag, empfaenger, blz, iban)) {
             System.out.println("Überweisung von Konto " + sender.getIban() + " zu Konto " + empfaenger.getIban() + " abgeschlossen.\n");
         } else {
             System.out.println("Überweisung fehlgeschlagen.");
