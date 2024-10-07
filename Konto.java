@@ -10,16 +10,19 @@ public class Konto extends Bank {
     private Bank bank;
     private double dispolimit;
     private List<String> transaktionsliste;
+    private int ueberweisungslimit;
 
     public Konto() {
     }
-    public Konto(Bank bank, int iban, double kontostand, double dispolimit, Kunde kunde) {
+
+    public Konto(Bank bank, int iban, double kontostand, double dispolimit, int ueberweisungslimit, Kunde kunde) {
         this.setKunde(kunde);
         this.setIban(iban);
         this.setKontostand(kontostand);
         this.setBank(bank);
         this.transaktionsliste = new ArrayList<>();
         this.setDispolimit(dispolimit);
+        this.setUeberweisungslimit(ueberweisungslimit);
     }
     public int getIban() {
         return iban;
@@ -48,8 +51,13 @@ public class Konto extends Bank {
     public List<String> getTransaktionsliste() {
         return transaktionsliste;
     }
-
-    public void printTransaktionen() {
+    public void setUeberweisungslimit(int ueberweisungslimit) {
+        this.ueberweisungslimit = ueberweisungslimit;
+    }
+    public int getUeberweisungslimit() {
+        return ueberweisungslimit;
+    }
+    public void transaktionenString() {
         System.out.println("Transaktionen für Konto " + this.getIban() + ":");
         for (String transaktion : transaktionsliste) {
             System.out.println(transaktion);
@@ -79,7 +87,7 @@ public class Konto extends Bank {
         this.transaktionsliste.add("Abhebung: " + betrag + " €");
     }
     public boolean transaktion(double betrag, Konto empfaenger, int blz, int iban) {
-        if (betrag > 2000) {
+        if (betrag > this.ueberweisungslimit) {
             System.out.println("Abgelehnt: Der Betrag " + betrag + " liegt über dem Überweisungslimit.\n");
             return false;
         }
@@ -91,9 +99,6 @@ public class Konto extends Bank {
         empfaenger.kontostand += betrag;
         this.transaktionsliste.add("Überweisung an Konto " + empfaenger.getIban() + ": -" + betrag + " €");
         empfaenger.addTransaktion("Eingang von Konto " + this.getIban() + ": +" + betrag + " €");
-        for(int i = 0; i <= 2; i++) {
-            System.out.println("Haben Sie einen Moment Geduld...\n");
-        }
         System.out.println("Überweisung erfolgreich: " + betrag + " € an Konto " + empfaenger.getIban());
         return true;
     }
