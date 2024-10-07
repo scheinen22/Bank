@@ -7,6 +7,7 @@ public class Bank {
 
     public Bank() {
     }
+    
     public Bank(int blz, String bankname) {
         this.setBlz(blz);
         this.setBankname(bankname);
