@@ -87,6 +87,9 @@ public class Konto extends Bank {
         if (betrag <= 0) {
             return;
         }
+        if (this.kontostand - betrag < this.dispolimit) {
+            return;
+        }
         this.kontostand -= betrag;
         this.transaktionsliste.add("Abhebung: " + betrag + " €");
     }
