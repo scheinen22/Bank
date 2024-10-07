@@ -6,7 +6,6 @@ public class Bank {
     private String bankname;
 
     public Bank() {
-
     }
     public Bank(int blz, String bankname) {
         this.setBlz(blz);
@@ -28,6 +27,10 @@ public class Bank {
         return "BLZ: " + this.getBlz() + "\nBankname: " + this.getBankname();
     }
     public void transfer(Konto sender, Konto empfaenger, double betrag, int blz, int iban) {
+        if (empfaenger == null || empfaenger.getBank() == null || empfaenger.getBank().getBlz() <= 0) {
+            System.out.println("Empfänger nicht vorhanden");
+            return;
+        }
         if (empfaenger.getBank().getBlz() != blz && empfaenger.getIban() != iban) {
             System.out.println("Überweisung fehlgeschlagen.\nIBAN und Bankleitzahl stimmen nicht überein.\n");
             return;
