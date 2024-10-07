@@ -1,5 +1,6 @@
 package banksystem;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +53,11 @@ public class Konto extends Bank {
         return transaktionsliste;
     }
     public void setUeberweisungslimit(int ueberweisungslimit) {
-        this.ueberweisungslimit = ueberweisungslimit;
+        if (ueberweisungslimit > 0) {
+            this.ueberweisungslimit = ueberweisungslimit;
+            return;
+        }
+        System.out.println("Ungültiges Überweisungslimit");
     }
     public int getUeberweisungslimit() {
         return ueberweisungslimit;
