@@ -7,7 +7,6 @@ public class Bank {
 
     public Bank() {
     }
-    
     public Bank(int blz, String bankname) {
         this.setBlz(blz);
         this.setBankname(bankname);
@@ -27,7 +26,7 @@ public class Bank {
     public String bankinformationenAnzeigenString() {
         return "BLZ: " + this.getBlz() + "\nBankname: " + this.getBankname();
     }
-    public void transfer(Konto sender, Konto empfaenger, double betrag, int blz, int iban) {
+    public static void transfer(Konto sender, Konto empfaenger, double betrag, int blz, int iban) {
         if (empfaenger == null || empfaenger.getBank() == null || empfaenger.getBank().getBlz() <= 0) {
             System.out.println("Empfänger nicht vorhanden");
             return;
