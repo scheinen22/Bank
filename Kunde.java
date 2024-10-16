@@ -9,7 +9,7 @@ public class Kunde extends Konto {
     public Kunde(String vorname, String nachname, String geburtsdatum, String adresse) {
         this.setVorname(vorname);
         this.setNachname(nachname);
-        this.setGeburtsdatum(geburtsdatum);
+        this.setGeburtsdatum(geburtsdatum); // test
         this.setAdresse(adresse);
     }
     public String getVorname() {
